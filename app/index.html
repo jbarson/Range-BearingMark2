@@ -24,17 +24,24 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
 
-  <div ng-view></div>
+  <div ui-view></div>
+  <div ng-controller="Main as main">
+  <svg xmlns="http://www.w3.org/2000/svg" id="mapElement" width="1000" height="1000">
 
-
-
-  <div>Angular seed app: v<span app-version></span></div>
-
+    <g ng-repeat="hex in main.hexes" transform="translate({{ 20+hex[0]*15 }},{{ hex[0]%2?hex[1]*17.32+20:hex[1]*17.32-8.66+20 }} )">
+      <polygon
+          points="10.0,0 5.0,-8.66 -5.0,-8.66 -10.0,0 -5.0,8.66 5.0,8.66"
+          fill="white" stroke="black" stroke-width="1"
+          ></polygon>
+      <circle cx="0" cy="0" r="1" ></circle>
+    </g>
+  </svg>
+  </div>
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
   <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/ui-router/release/angular-ui-router.js"></script>
   <script src="app.js"></script>
   <script src="view1/view1.js"></script>
   <script src="view2/view2.js"></script>

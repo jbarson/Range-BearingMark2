@@ -1,3 +1,15 @@
-<p>This is the partial for view 1.</p>
+<div id="hexMap" class="map">
+  <svg id="mapElement" ng-attr-width="{{map.width}}" ng-attr-height="{{map.height}}">
+    <g class="viewport">
+      <g ng-repeat="node in nodes">
+        <!-- repeat through all the nodes and draw all the links first -->
+        <star-link ng-repeat="link in node.links"></star-link>
+      </g>
+      <!-- now we create the systems so that they appear on top of the links -->
+      <star-system ng-repeat="node in nodes"></star-system>
+    </g>
+  </svg>
+
+</div>
 
 
