@@ -16,8 +16,8 @@
 </head>
 <body>
   <ul class="menu">
-    <li><a href="#/view1">view1</a></li>
-    <li><a href="#/view2">view2</a></li>
+    <!--<li><a href="#/view1">view1</a></li>-->
+    <!--<li><a href="#/view2">view2</a></li>-->
   </ul>
 
   <!--[if lt IE 7]>
@@ -26,14 +26,13 @@
 
   <div ui-view></div>
   <div ng-controller="Main as main">
-  <svg xmlns="http://www.w3.org/2000/svg" id="mapElement" width="1000" height="1000">
-
-    <g ng-repeat="hex in main.hexes" transform="translate({{ 20+hex[0]*15 }},{{ hex[0]%2?hex[1]*17.32+20:hex[1]*17.32-8.66+20 }} )">
-      <polygon
-          points="10.0,0 5.0,-8.66 -5.0,-8.66 -10.0,0 -5.0,8.66 5.0,8.66"
-          fill="white" stroke="black" stroke-width="1"
-          ></polygon>
-      <circle cx="0" cy="0" r="1" ></circle>
+  <svg xmlns="http://www.w3.org/2000/svg" id="mapElement" width="1200" height="1200">
+    <g ng-repeat="hex in main.hexes" ng-attr-transform="translate({{ main.translation(hex) }} )">
+        <polygon
+            points="10.0,0 5.0,-8.66 -5.0,-8.66 -10.0,0 -5.0,8.66 5.0,8.66"
+            fill="white" stroke="gray" stroke-width="1"
+            ></polygon>
+        <text font-size="4" y="-3" text-anchor="middle">{{ main.hexNumber(hex) }}</text>
     </g>
   </svg>
   </div>
